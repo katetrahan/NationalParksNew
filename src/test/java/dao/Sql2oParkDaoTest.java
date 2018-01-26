@@ -23,6 +23,10 @@ public class Sql2oParkDaoTest {
         return new Park("Park", "Peak", "1000 acres", "Hot", "200 visits a year", "Up for resizing");
     }
 
+    public State setupState() {
+        return new State("Oregon", "1", "4.093 million");
+    }
+
 
 
     @Before
@@ -66,6 +70,23 @@ public class Sql2oParkDaoTest {
         parkDao.deleteById(park1.getId());
         assertEquals(0, parkDao.getAll().size());
     }
+
+//    @Test
+//    public void addParkToState() throws Exception {
+//        State testState = setupState();
+//        State otherState = setupState();
+//
+//        stateDao.add(testState);
+//        stateDao.add(otherState);
+//
+//        Park testPark = setupPark();
+//        parkDao.add(testPark);
+//
+//        parkDao.addParkToState(testPark, testState);
+//        parkDao.addParkToState(testPark,otherState);
+//
+//        assertEquals(2, parkDao.getAll);
+//    }
 
 
 

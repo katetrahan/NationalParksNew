@@ -54,10 +54,18 @@ public class Sql2oParkDao implements ParkDao{
 
 
 
-    @Override
-    public void addParkToState(Park park, State state) {
-        String sql = "INSERT INTO parks_states"
-    }
+//    @Override
+//    public void addParkToState(Park park, State state) {
+//        String sql = "INSERT INTO parks_states (parkId, stateId) VALUES (:parkId, :stateId)";
+//        try (Connection con = sql2o.open()) {
+//            con.createQuery(sql)
+//                    .addParameter("stateId", state.getId())
+//                    .addParameter("parkId", park.getId())
+//                    .executeUpdate();
+//        } catch (Sql2oException ex) {
+//            System.out.println(ex);
+//        }
+//    }
 
 
 

@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS tips (
 
 );
 
-CREATE TABLE IF NOT EXISTS parks_states (
+CREATE TABLE IF NOT EXISTS states_parks (
     id int PRIMARY KEY auto_increment,
     stateId INTEGER,
     parkId INTEGER

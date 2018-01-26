@@ -22,12 +22,16 @@ public class Sql2oStateDaoTest {
         return new State("Oregon", "1", "4.093 million");
     }
 
+    public Park setupPark() {
+        return new Park("Park", "Peak", "1000 acres", "Hot", "200 visits a year", "Up for resizing");
+    }
+
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         stateDao = new Sql2oStateDao(sql2o);
-//        parkDao = new Sql2oParkDao(sql2o);
+        parkDao = new Sql2oParkDao(sql2o);
         con = sql2o.open();
     }
 
@@ -82,6 +86,24 @@ public class Sql2oStateDaoTest {
         stateDao.deleteById(state.getId());
         stateDao.deleteById(secondstate.getId());
         assertEquals(0,stateDao.getAll().size());
+    }
+
+    @Test
+    public void getAllParksForAState() throws Exception {
+        Park testPark = setupPark();
+        parkDao.add(testPark);
+        Park park2 = new Park("Crater Lake", "Short", "Small", "Warm", "200", "No");
+        parkDao.add(park2);
+
+
+        State testState = setupState();
+        stateDao.add(testState);
+        stateDao.addStateToPark(testState,testPark);
+        stateDao.addStateToPark(testState,park2);
+
+        Park[] parks = {testPark, park2};
+
+        assertEquals(stateDao.getAllParksForAState(testState.getId()),Arrays.asList(parks));
     }
 
 
