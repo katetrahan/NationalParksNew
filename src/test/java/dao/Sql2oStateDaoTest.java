@@ -64,4 +64,13 @@ public class Sql2oStateDaoTest {
         assertEquals(secondstate, stateDao.findById(secondstate.getId()));
     }
 
+    @Test
+    public void update() throws Exception {
+        State state = setupState();
+        stateDao.add(state);
+        stateDao.update(state.getId(),"Utah", "", "");
+        assertEquals("Utah", stateDao.findById(state.getId()).getName());
+    }
+
+
 }

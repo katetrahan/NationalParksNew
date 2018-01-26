@@ -50,6 +50,22 @@ public class Sql2oStateDao implements StateDao {
         }
     }
 
+    @Override
+    public void update(int id, String name, String numberOfParks, String population){
+        String sql = "UPDATE states SET name = :name, numberOfParks = :numberOfParks, population = :population WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("name", name)
+                    .addParameter("numberOfParks", numberOfParks)
+                    .addParameter("population", population)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+
 
 
 }
