@@ -17,3 +17,12 @@ CREATE TABLE IF NOT EXISTS parks (
     visits VARCHAR,
     resize VARCHAR
 );
+
+CREATE TABLE IF NOT EXISTS tips (
+    id int PRIMARY KEY auto_increment,
+    writtenby VARCHAR,
+    content VARCHAR,
+    rating INTEGER,
+    parkId INTEGER
+
+);

@@ -1,7 +1,36 @@
 package dao;
 
-/**
- * Created by Guest on 1/26/18.
- */
-public class Sql2oTipDao {
+import models.*;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
+
+public class Sql2oTipDao implements TipDao {
+
+    Sql2o sql2o;
+
+    public Sql2oTipDao(Sql2o sql2o) {
+        this.sql2o = sql2o;
+    }
+
+    @Override
+    public void add(Tip tip) {
+        String sql = "INSERT INTO tips (writtenBy, content, rating, parkId) VALUES (:writtenBy, :content, :rating, :parkId)";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(sql)
+                    .bind(tip)
+                    .executeUpdate()
+                    .getKey();
+            tip.setId(id);
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+
+    }
 }
