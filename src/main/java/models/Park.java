@@ -104,4 +104,32 @@ public class Park {
         result = 31 * result + id;
         return result;
     }
+
+    //    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        Park park = (Park) o;
+//
+//        if (id != park.id) return false;
+//        if (!name.equals(park.name)) return false;
+//        if (peak != null ? !peak.equals(park.peak) : park.peak != null) return false;
+//        if (size != null ? !size.equals(park.size) : park.size != null) return false;
+//        if (terrain != null ? !terrain.equals(park.terrain) : park.terrain != null) return false;
+//        if (visits != null ? !visits.equals(park.visits) : park.visits != null) return false;
+//        return resize != null ? resize.equals(park.resize) : park.resize == null;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = name.hashCode();
+//        result = 31 * result + (peak != null ? peak.hashCode() : 0);
+//        result = 31 * result + (size != null ? size.hashCode() : 0);
+//        result = 31 * result + (terrain != null ? terrain.hashCode() : 0);
+//        result = 31 * result + (visits != null ? visits.hashCode() : 0);
+//        result = 31 * result + (resize != null ? resize.hashCode() : 0);
+//        result = 31 * result + id;
+//        return result;
+//    }
 }

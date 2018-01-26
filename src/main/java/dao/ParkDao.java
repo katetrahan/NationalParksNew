@@ -11,7 +11,7 @@ public interface ParkDao {
 //    void addParkToState(Park park, State state);
 
     //read
-//    Park findById(int id);
+    Park findById(int id);
     List<Park> getAll();
 //    List<State> getAllStatesIncludingPark(int id); //few but SOME instances where a national park is in multiple states
 
@@ -19,7 +19,7 @@ public interface ParkDao {
 //    void update(int id, String name, String peak, String size, String terrain, String visits, String resize);
 
     //delete
-//    void deleteById(int id);
+    void deleteById(int id);
 
 
 }

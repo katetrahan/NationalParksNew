@@ -40,5 +40,30 @@ public class Sql2oParkDao implements ParkDao{
         }
     }
 
+    @Override
+    public void deleteById(int id) {
+        String sql = "DELETE FROM parks WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+
+
+    @Override
+    public Park findById(int id) {
+        String sql = "SELECT * FROM parks WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Park.class);
+        }
+    }
+
+
 
 }

@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.concurrent.ExecutionException;
+
 import static org.junit.Assert.*;
 
 
@@ -53,6 +55,36 @@ public class Sql2oParkDaoTest {
         Park notaddedpark = setupPark();
         assertEquals(2,parkDao.getAll().size());
     }
+
+    @Test
+    public void deleteById_deletesCorrectPark() throws Exception {
+        Park park = setupPark();
+        parkDao.add(park);
+        Park park1 = setupPark();
+        parkDao.add(park1);
+        parkDao.deleteById(park.getId());
+        parkDao.deleteById(park1.getId());
+        assertEquals(0, parkDao.getAll().size());
+    }
+
+
+
+
+
+
+
+//    @Test
+//    public void findById() throws Exception {
+//        Park park1 = new Park("Zion", "Tall", "Big", "Cold", "100","No");
+//        parkDao.add(park1);
+//
+//        Park park2 = new Park("Crater Lake", "Short", "Small", "Warm", "200", "No");
+//        parkDao.add(park2);
+//
+//        assertEquals(park2, parkDao.findById(park2.getId()));
+//    }
+
+
 
 
 }
