@@ -72,5 +72,17 @@ public class Sql2oStateDaoTest {
         assertEquals("Utah", stateDao.findById(state.getId()).getName());
     }
 
+    @Test
+    public void deleteById() throws Exception {
+        State state = setupState();
+        stateDao.add(state);
+        State secondstate = setupState();
+        stateDao.add(secondstate);
+
+        stateDao.deleteById(state.getId());
+        stateDao.deleteById(secondstate.getId());
+        assertEquals(0,stateDao.getAll().size());
+    }
+
 
 }

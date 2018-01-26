@@ -18,7 +18,7 @@ public interface StateDao {
     void update(int id, String name, String numberOfParks, String population);
 
     //delete
-//    void deleteById(int id);
+    void deleteById(int id);
 
 
 }
