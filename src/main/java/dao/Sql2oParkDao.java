@@ -19,7 +19,16 @@ public class Sql2oParkDao implements ParkDao{
 
     @Override
     public void add(Park park) {
-        String sql = "INSERT"
+        String sql = "INSERT INTO parks (name, peak, terrain, visits, resize) VALUES (:name, :peak, :terrain, :visits, :resize)";
+        try (Connection con = sql2o.open()) {
+            int id = (int) con.createQuery(sql)
+                    .bind(park)
+                    .executeUpdate()
+                    .getKey();
+            park.setId(id);
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
     }
 
 
