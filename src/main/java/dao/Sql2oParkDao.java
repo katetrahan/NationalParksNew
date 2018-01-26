@@ -31,5 +31,14 @@ public class Sql2oParkDao implements ParkDao{
         }
     }
 
+    @Override
+    public List<Park> getAll(){
+        String sql = "SELECT * FROM parks";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .executeAndFetch(Park.class);
+        }
+    }
+
 
 }

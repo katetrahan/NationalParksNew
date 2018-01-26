@@ -12,7 +12,7 @@ public interface ParkDao {
 
     //read
 //    Park findById(int id);
-//    List<Park> getAll();
+    List<Park> getAll();
 //    List<State> getAllStatesIncludingPark(int id); //few but SOME instances where a national park is in multiple states
 
     //update

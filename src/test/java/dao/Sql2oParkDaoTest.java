@@ -44,5 +44,15 @@ public class Sql2oParkDaoTest {
         assertEquals(1,park.getId());
     }
 
+    @Test
+    public void getAll() throws Exception {
+        Park park = setupPark();
+        parkDao.add(park);
+        Park park1 = setupPark();
+        parkDao.add(park1);
+        Park notaddedpark = setupPark();
+        assertEquals(2,parkDao.getAll().size());
+    }
+
 
 }
