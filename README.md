@@ -15,6 +15,7 @@ _This is an API that uses Java in order to serve detailed data on National Parks
 | **See one state**| "Oregon" | "Oregon" |
 | **See specific information about a state**| "name, number of national parks, population" | "name, number of national parks, population" |
 | **See list of national parks by state**| "Oregon" | "Crater Lake"|
+| **See list of details about national parks** |"Zion National Park"| "Highest peak, size, how many people visit per year, up for resizing"
 | **See what state a national park is in when searching** |"Crater Lake"|"Oregon"|
 | **Leave a tip/url to donate to National Parks** | "Make sure to hike Angel's Landing"| "Make sure to hike Angel's Landing"|
 | **Add National Parks(for future use) to database**| "Arches(revised)" | "Arches(revised)" |
