@@ -40,6 +40,17 @@ public class Sql2oStateDaoTest {
     public void add() throws Exception {
         State state = setupState();
         stateDao.add(state);
-        assertEquals(2, state.getId());
+        assertEquals(1, state.getId());
     }
+
+    @Test
+    public void getAll() throws Exception {
+        State state = setupState();
+        stateDao.add(state);
+        State secondstate = setupState();
+        stateDao.add(secondstate);
+        State notAddedState = setupState();
+        assertEquals(2,stateDao.getAll().size());
+    }
+
 }

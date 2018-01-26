@@ -9,7 +9,7 @@ public interface StateDao {
 //    void addNptoState(State state, Park park);
 
     //read
-//    List<State> getAll();
+    List<State> getAll();
 //    List<Park> getAllParksForAState(int stateId);
 
 //    State findById(int id);

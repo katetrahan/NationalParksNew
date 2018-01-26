@@ -31,6 +31,15 @@ public class Sql2oStateDao implements StateDao {
         }
     }
 
+    @Override
+    public List<State> getAll() {
+        String sql = "SELECT * FROM states";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .executeAndFetch(State.class);
+        }
+    }
+
 
 
 }
