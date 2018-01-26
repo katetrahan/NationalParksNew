@@ -12,7 +12,7 @@ public interface StateDao {
     List<State> getAll();
 //    List<Park> getAllParksForAState(int stateId);
 
-//    State findById(int id);
+    State findById(int id);
 
     //update
 //    void update(int id, String name, String numberOfParks, String population);

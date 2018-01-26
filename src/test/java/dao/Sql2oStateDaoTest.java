@@ -53,4 +53,15 @@ public class Sql2oStateDaoTest {
         assertEquals(2,stateDao.getAll().size());
     }
 
+    @Test
+    public void findById() throws Exception {
+        State state = setupState();
+        State secondstate = setupState();
+        State thirdstate = setupState();
+        stateDao.add(state);
+        stateDao.add(secondstate);
+        stateDao.add(thirdstate);
+        assertEquals(secondstate, stateDao.findById(secondstate.getId()));
+    }
+
 }

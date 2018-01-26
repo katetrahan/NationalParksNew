@@ -40,6 +40,16 @@ public class Sql2oStateDao implements StateDao {
         }
     }
 
+    @Override
+    public State findById(int id) {
+        String sql = "SELECT * FROM states WHERE id = :id";
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(State.class);
+        }
+    }
+
 
 
 }
