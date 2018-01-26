@@ -33,4 +33,23 @@ public class Sql2oTipDao implements TipDao {
         }
 
     }
+
+//    @Override
+//    public List<Tip> getAll() {
+//        String sql = "SELECT * FROM tips";
+//        try (Connection con = sql2o.open()) {
+//            return con.createQuery(sql)
+//                    .executeAndFetch(Tip.class);
+//        }
+//    }
+
+    @Override
+    public List<Tip> getAllTipsByPark(int parkId) {
+        String sql = "SELECT * FROM tips WHERE parkId = :parkId";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("parkId", parkId)
+                    .executeAndFetch(Tip.class);
+        }
+    }
 }

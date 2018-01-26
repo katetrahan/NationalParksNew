@@ -26,3 +26,10 @@ CREATE TABLE IF NOT EXISTS tips (
     parkId INTEGER
 
 );
+
+CREATE TABLE IF NOT EXISTS parks_states (
+    id int PRIMARY KEY auto_increment,
+    stateId INTEGER,
+    parkId INTEGER
+
+)

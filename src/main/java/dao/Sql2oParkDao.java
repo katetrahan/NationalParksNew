@@ -55,14 +55,21 @@ public class Sql2oParkDao implements ParkDao{
 
 
     @Override
-    public Park findById(int id) {
-        String sql = "SELECT * FROM parks WHERE id = :id";
-        try(Connection con = sql2o.open()) {
-            return con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Park.class);
-        }
+    public void addParkToState(Park park, State state) {
+        String sql = "INSERT INTO parks_states"
     }
+
+
+
+//    @Override
+//    public Park findById(int id) {
+//        String sql = "SELECT * FROM parks WHERE id = :id";
+//        try(Connection con = sql2o.open()) {
+//            return con.createQuery(sql)
+//                    .addParameter("id", id)
+//                    .executeAndFetchFirst(Park.class);
+//        }
+//    }
 
 
 

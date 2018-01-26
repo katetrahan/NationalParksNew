@@ -9,10 +9,12 @@ public interface TipDao {
 
     //create
     void add(Tip tip);
-
-
-
     //read
+
+//    List<Tip> getAll();
+
+    List<Tip> getAllTipsByPark(int parkId);
+
     //update
     //delete
 
