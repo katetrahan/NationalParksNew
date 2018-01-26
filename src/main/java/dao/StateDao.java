@@ -6,12 +6,12 @@ import java.util.List;
 public interface StateDao {
     //create
     void add(State state);
-    void addStateToPark(State state, Park park);
+//    void addStateToPark(State state, Park park);
 
 
     //read
     List<State> getAll();
-    List<Park> getAllParksForAState(int stateId);
+//    List<Park> getAllParksForAState(int stateId);
 
     State findById(int id);
 

@@ -14,6 +14,8 @@ public class State {
         this.name = name;
         this.numberOfParks = numberOfParks;
         this.population = population;
+
+
     }
 
     public String getName() {
