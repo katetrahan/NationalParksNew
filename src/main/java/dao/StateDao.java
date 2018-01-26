@@ -1,7 +1,24 @@
 package dao;
 
-/**
- * Created by Guest on 1/26/18.
- */
+import models.*;
+import java.util.List;
+
 public interface StateDao {
+    //create
+    void add(State state);
+//    void addNptoState(State state, Park park);
+
+    //read
+//    List<State> getAll();
+//    List<Park> getAllParksForAState(int stateId);
+
+//    State findById(int id);
+
+    //update
+//    void update(int id, String name, String numberOfParks, String population);
+
+    //delete
+//    void deleteById(int id);
+
+
 }
