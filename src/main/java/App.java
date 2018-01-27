@@ -65,6 +65,10 @@ public class App {
             return gson.toJson(park);
         });
 
+        get("/parks", "application/json", (request, response) -> {
+            return gson.toJson(parkDao.getAll());
+        });
+
 
 
 
