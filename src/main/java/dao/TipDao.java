@@ -17,6 +17,7 @@ public interface TipDao {
 
     //update
     //delete
+//    void deleteById(int id);
 
 
 
