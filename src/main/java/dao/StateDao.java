@@ -6,7 +6,7 @@ import java.util.List;
 public interface StateDao {
     //create
     void add(State state);
-//    void addStateToPark(State state, Park park);
+    void addStateToPark(State state, Park park);
 
 
     //read
