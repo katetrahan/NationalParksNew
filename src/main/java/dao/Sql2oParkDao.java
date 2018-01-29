@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Sql2oParkDao implements ParkDao{
+public class Sql2oParkDao implements ParkDao {
 
     private final Sql2o sql2o;
 
@@ -26,13 +26,13 @@ public class Sql2oParkDao implements ParkDao{
                     .executeUpdate()
                     .getKey();
             park.setId(id);
-        } catch (Sql2oException ex){
+        } catch (Sql2oException ex) {
             System.out.println(ex);
         }
     }
 
     @Override
-    public List<Park> getAll(){
+    public List<Park> getAll() {
         String sql = "SELECT * FROM parks";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
@@ -53,29 +53,45 @@ public class Sql2oParkDao implements ParkDao{
     }
 
 
-
-//    @Override
-//    public void addParkToState(Park park, State state) {
-//        String sql = "INSERT INTO parks_states (parkId, stateId) VALUES (:parkId, :stateId)";
-//        try (Connection con = sql2o.open()) {
-//            con.createQuery(sql)
-//                    .addParameter("stateId", state.getId())
-//                    .addParameter("parkId", park.getId())
-//                    .executeUpdate();
-//        } catch (Sql2oException ex) {
-//            System.out.println(ex);
-//        }
-//    }
+    @Override
+    public void addParkToState(Park park, State state) {
+        String sql = "INSERT INTO states_parks (parkId, stateId) VALUES (:parkId, :stateId)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("stateId", state.getId())
+                    .addParameter("parkId", park.getId())
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 
 
     @Override
     public List<State> getAllStatesForAPark(int parkId) {
-        List<State> states = new ArrayList();
-        return states;
+        ArrayList<State> states = new ArrayList<>();
+
+        String stateParkQuery = "SELECT stateId FROM states_parks WHERE parkId = :parkId";
+
+        try (Connection con = sql2o.open()) {
+            List<Integer> allStateIds = con.createQuery(stateParkQuery)
+                    .addParameter("parkId", parkId)
+                    .executeAndFetch(Integer.class);
+            for (Integer stateId : allStateIds) {
+                String stateQuery = "SELECT * FROM states WHERE id = :stateId";
+                states.add(
+                        con.createQuery(stateQuery)
+                                .addParameter("stateId", stateId)
+                                .executeAndFetchFirst(State.class));
+            }
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+return states;
+
     }
-
-
-
-
-
 }
+
+
+
+

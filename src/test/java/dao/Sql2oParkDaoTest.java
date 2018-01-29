@@ -71,22 +71,21 @@ public class Sql2oParkDaoTest {
         assertEquals(0, parkDao.getAll().size());
     }
 
-//    @Test
-//    public void addParkToState() throws Exception {
-//        State testState = setupState();
-//        State otherState = setupState();
-//
-//        stateDao.add(testState);
-//        stateDao.add(otherState);
-//
-//        Park testPark = setupPark();
-//        parkDao.add(testPark);
-//
-//        parkDao.addParkToState(testPark, testState);
-//        parkDao.addParkToState(testPark,otherState);
-//
-//        assertEquals(2, parkDao.getAll);
-//    }
+    @Test
+    public void getAllStatesByParkReturnsCorrectly() throws Exception {
+        Park park = setupPark();
+        parkDao.add(park);
+        int parkId = park.getId();
+        State stateOne = setupState();
+        State stateTwo = setupState();
+        stateDao.add(stateOne);
+        stateDao.add(stateTwo);
+        parkDao.addParkToState(park,stateOne);
+        parkDao.addParkToState(park,stateTwo);
+
+        assertTrue(parkDao.getAllStatesForAPark(parkId).size() == 2);
+        assertTrue(parkDao.getAllStatesForAPark(parkId).contains(stateOne));
+    }
 
 
 
