@@ -46,6 +46,13 @@ public class Sql2oTipDao implements TipDao {
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from tips WHERE id = :id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id",id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
 
 
@@ -54,6 +61,7 @@ public class Sql2oTipDao implements TipDao {
         String sql = "SELECT * FROM tips WHERE parkId = :parkId";
         try (Connection con = sql2o.open()) {
             return con.createQuery(sql)
+                    .addColumnMapping("PARKID", "parkId")
                     .addParameter("parkId", parkId)
                     .executeAndFetch(Tip.class);
         }

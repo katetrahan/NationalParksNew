@@ -14,9 +14,10 @@ import static org.junit.Assert.*;
 
 public class Sql2oStateDaoTest {
 
-    Connection con;
-    Sql2oStateDao stateDao;
-    Sql2oParkDao parkDao;
+    private Connection con;
+    private Sql2oStateDao stateDao;
+    private Sql2oParkDao parkDao;
+    private Sql2oTipDao tipDao;
 
     public State setupState() {
         return new State("Oregon", "1", "4.093 million");
@@ -32,6 +33,7 @@ public class Sql2oStateDaoTest {
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         stateDao = new Sql2oStateDao(sql2o);
         parkDao = new Sql2oParkDao(sql2o);
+        tipDao = new Sql2oTipDao(sql2o);
         con = sql2o.open();
     }
 
@@ -45,6 +47,14 @@ public class Sql2oStateDaoTest {
         State state = setupState();
         stateDao.add(state);
         assertEquals(1, state.getId());
+    }
+
+    @Test
+    public void addingStateSetsStateId() throws Exception {
+        State testState = setupState();
+        int originalStateId = testState.getId();
+        stateDao.add(testState);
+        assertNotEquals(originalStateId,testState.getId());
     }
 
     @Test

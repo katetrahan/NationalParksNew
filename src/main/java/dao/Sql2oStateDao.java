@@ -79,6 +79,12 @@ public class Sql2oStateDao implements StateDao {
 
 //    @Override
 //    public List<Park> getAllParksForAState(int stateId) {
+//        List<Park> parks = new ArrayList<>();
+//        return parks;
+//    }
+
+//    @Override
+//    public List<Park> getAllParksForAState(int stateId) {
 //        ArrayList<Park> parks = new ArrayList<>();
 //        String getParksIdsQuery = "SELECT parkId FROM states_parks WHERE stateId = :stateId";
 //        try (Connection con = sql2o.open()) {
