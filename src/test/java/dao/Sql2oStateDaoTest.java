@@ -55,6 +55,14 @@ public class Sql2oStateDaoTest {
         int originalStateId = testState.getId();
         stateDao.add(testState);
         assertNotEquals(originalStateId,testState.getId());
+
+    }
+
+    @Test
+    public void addedStatesreturnCorrectly() throws Exception {
+        State testState = setupState();
+        stateDao.add(testState);
+        assertEquals(1,stateDao.getAll().size());
     }
 
     @Test
