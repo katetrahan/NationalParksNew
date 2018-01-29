@@ -23,7 +23,7 @@ public class Sql2oStateDaoTest {
     }
 
     public Park setupPark() {
-        return new Park("Park", "Peak", "1000 acres", "Hot", "200 visits a year", "Up for resizing");
+        return new Park("Park",  "Hot", "200 visits a year", "Up for resizing");
     }
 
     @Before

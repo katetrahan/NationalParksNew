@@ -44,6 +44,12 @@ public class Sql2oTipDao implements TipDao {
 //    }
 
     @Override
+    public void deleteById(int id) {
+        String sql = "DELETE from tips WHERE id = :id";
+    }
+
+
+    @Override
     public List<Tip> getAllTipsByPark(int parkId) {
         String sql = "SELECT * FROM tips WHERE parkId = :parkId";
         try (Connection con = sql2o.open()) {

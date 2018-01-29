@@ -20,7 +20,7 @@ public class Sql2oParkDaoTest {
     Sql2oStateDao stateDao;
 
     public Park setupPark() {
-        return new Park("Park", "Peak", "1000 acres", "Hot", "200 visits a year", "Up for resizing");
+        return new Park("Park",   "Hot", "200 visits a year", "Up for resizing");
     }
 
     public State setupState() {

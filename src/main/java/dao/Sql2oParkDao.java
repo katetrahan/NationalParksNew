@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Sql2oParkDao implements ParkDao{
 
-    Sql2o sql2o;
+    private final Sql2o sql2o;
 
     public Sql2oParkDao(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -19,7 +19,7 @@ public class Sql2oParkDao implements ParkDao{
 
     @Override
     public void add(Park park) {
-        String sql = "INSERT INTO parks (name, peak, terrain, visits, resize) VALUES (:name, :peak, :terrain, :visits, :resize)";
+        String sql = "INSERT INTO parks (name, terrain, visits, resize) VALUES (:name, :terrain, :visits, :resize)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(park)
@@ -68,16 +68,13 @@ public class Sql2oParkDao implements ParkDao{
 //    }
 
 
-
 //    @Override
-//    public Park findById(int id) {
-//        String sql = "SELECT * FROM parks WHERE id = :id";
-//        try(Connection con = sql2o.open()) {
-//            return con.createQuery(sql)
-//                    .addParameter("id", id)
-//                    .executeAndFetchFirst(Park.class);
-//        }
+//    public List<State> getAllStatesForAPark(int parkId) {
+//        List<State> states = newArrayList();
+//        return states;
 //    }
+
+
 
 
 

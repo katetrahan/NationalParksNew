@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Sql2oStateDao implements StateDao {
 
-    Sql2o sql2o;
+    private final Sql2o sql2o;
 
     public Sql2oStateDao(Sql2o sql2o){
         this.sql2o = sql2o;
@@ -51,13 +51,13 @@ public class Sql2oStateDao implements StateDao {
     }
 
     @Override
-    public void update(int id, String name, String numberOfParks, String population){
+    public void update(int id, String newName, String newNumberOfParks, String newPopulation){
         String sql = "UPDATE states SET name = :name, numberOfParks = :numberOfParks, population = :population WHERE id = :id";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("name", name)
-                    .addParameter("numberOfParks", numberOfParks)
-                    .addParameter("population", population)
+                    .addParameter("name", newName)
+                    .addParameter("numberOfParks", newNumberOfParks)
+                    .addParameter("population", newPopulation)
                     .addParameter("id",id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

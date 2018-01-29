@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS states (
 CREATE TABLE IF NOT EXISTS parks (
     id int PRIMARY KEY auto_increment,
     name VARCHAR,
-    peak VARCHAR,
     terrain VARCHAR,
     visits VARCHAR,
     resize VARCHAR
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS parks (
 
 CREATE TABLE IF NOT EXISTS tips (
     id int PRIMARY KEY auto_increment,
-    writtenby VARCHAR,
+    writtenBy VARCHAR,
     content VARCHAR,
     rating INTEGER,
     parkId INTEGER
@@ -32,4 +31,4 @@ CREATE TABLE IF NOT EXISTS states_parks (
     stateId INTEGER,
     parkId INTEGER
 
-)
+);

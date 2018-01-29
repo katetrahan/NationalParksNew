@@ -19,7 +19,7 @@ public class Sql2oTipDaoTest {
     Sql2oParkDao parkDao;
 
     public Park setupPark() {
-        return new Park("Park", "Peak", "1000 acres", "Hot", "200 visits a year", "Up for resizing");
+        return new Park("Park",  "Hot", "200 visits a year", "Up for resizing");
     }
 
     @Before
@@ -45,21 +45,33 @@ public class Sql2oTipDaoTest {
         assertEquals(1, testTip.getId());
     }
 
-//    @Test
-//    public void getAllTipsByPark() throws Exception {
-//        Park testPark = setupPark();
-//        parkDao.add(testPark);
-//
-//        Park newPark = setupPark();
-//        parkDao.add(newPark);
-//
-//        Tip testTip = new Tip("jan", "bring sunscreen", 4, testPark.getId());
-//
-//        Tip othertip = new Tip("donald", "parks suck", 1, testPark.getId());
-//
-//        assertEquals(2, tipDao.getAllTipsByPark(testPark.getId()).size());//need to get id of park first.
-//        assertEquals(0, tipDao.getAllTipsByPark(newPark.getId()).size());//need to get id of park first
-//    }
+    @Test
+    public void addingTipSetsId() throws Exception {
+        Park testPark = setupPark();
+        parkDao.add(testPark);
+        Tip testTip = new Tip("Oprah","Bring comfy shoes", 5, testPark.getId());
+        tipDao.add(testTip);
+        assertEquals(1,testTip.getId());
+
+    }
+
+    @Test
+    public void getAllTipsByPark() throws Exception {
+        Park testPark = setupPark();
+        parkDao.add(testPark);
+
+        Park newPark = setupPark();
+        parkDao.add(newPark);
+
+        Tip testTip = new Tip("jan", "bring sunscreen", 4, testPark.getId());
+        tipDao.add(testTip);
+
+        Tip othertip = new Tip("donald", "parks suck", 1, testPark.getId());
+        tipDao.add(othertip);
+
+        assertEquals(2, tipDao.getAllTipsByPark(testPark.getId()).size());//need to get id of park first.
+        assertEquals(0, tipDao.getAllTipsByPark(newPark.getId()).size());//need to get id of park first
+    }
 
 
 

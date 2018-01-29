@@ -5,17 +5,13 @@ import java.util.Objects;
 
 public class Park {
     private String name;
-    private String peak;
-    private String size;
     private String terrain;
     private String visits;
     private String resize;
     private int id;
 
-    public Park(String name, String peak, String size, String terrain, String visits, String resize) {
+    public Park(String name, String terrain, String visits, String resize) {
         this.name = name;
-        this.peak = peak;
-        this.size = size;
         this.terrain = terrain;
         this.visits = visits;
         this.resize = resize;
@@ -27,22 +23,6 @@ public class Park {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPeak() {
-        return peak;
-    }
-
-    public void setPeak(String peak) {
-        this.peak = peak;
-    }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
     }
 
     public String getTerrain() {
@@ -81,29 +61,20 @@ public class Park {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Park park = (Park) o;
-
-        if (id != park.id) return false;
-        if (!name.equals(park.name)) return false;
-        if (peak != null ? !peak.equals(park.peak) : park.peak != null) return false;
-        if (size != null ? !size.equals(park.size) : park.size != null) return false;
-        if (terrain != null ? !terrain.equals(park.terrain) : park.terrain != null) return false;
-        if (visits != null ? !visits.equals(park.visits) : park.visits != null) return false;
-        return resize != null ? resize.equals(park.resize) : park.resize == null;
+        return id == park.id &&
+                Objects.equals(name, park.name) &&
+                Objects.equals(terrain, park.terrain) &&
+                Objects.equals(visits, park.visits) &&
+                Objects.equals(resize, park.resize);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (peak != null ? peak.hashCode() : 0);
-        result = 31 * result + (size != null ? size.hashCode() : 0);
-        result = 31 * result + (terrain != null ? terrain.hashCode() : 0);
-        result = 31 * result + (visits != null ? visits.hashCode() : 0);
-        result = 31 * result + (resize != null ? resize.hashCode() : 0);
-        result = 31 * result + id;
-        return result;
+
+        return Objects.hash(name, terrain, visits, resize, id);
     }
+}
 
     //    @Override
 //    public boolean equals(Object o) {
@@ -132,4 +103,4 @@ public class Park {
 //        result = 31 * result + id;
 //        return result;
 //    }
-}
+
