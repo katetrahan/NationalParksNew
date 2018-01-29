@@ -90,6 +90,17 @@ public class Sql2oTipDaoTest {
         assertEquals(1, tipDao.getAll().size());
     }
 
+    @Test
+    public void deleteById() throws Exception {
+        Park newPark = setupPark();
+        parkDao.add(newPark);
+        Tip newTip = new Tip ("Oprah", "wear good shoes", 5, newPark.getId());
+
+        tipDao.add(newTip);
+        tipDao.deleteById(newTip.getId());
+        assertEquals(0, tipDao.getAllTipsByPark(newPark.getId()).size());
+    }
+
 
 
 
