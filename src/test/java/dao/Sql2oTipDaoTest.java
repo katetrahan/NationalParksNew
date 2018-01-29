@@ -17,9 +17,14 @@ public class Sql2oTipDaoTest {
     Sql2o sql2o;
     Sql2oTipDao tipDao;
     Sql2oParkDao parkDao;
+    Sql2oStateDao stateDao;
 
     public Park setupPark() {
         return new Park("Park",  "Hot", "200 visits a year", "Up for resizing");
+    }
+
+    public State setupState() {
+        return new State("Oregon", "1", "4.093 million");
     }
 
     @Before
@@ -28,6 +33,7 @@ public class Sql2oTipDaoTest {
         sql2o = new Sql2o(connectionString, "", "");
         tipDao = new Sql2oTipDao(sql2o);
         parkDao = new Sql2oParkDao(sql2o);
+        stateDao = new Sql2oStateDao(sql2o);
         con = sql2o.open();
 
     }
@@ -71,6 +77,17 @@ public class Sql2oTipDaoTest {
 
         assertEquals(2, tipDao.getAllTipsByPark(testPark.getId()).size());//need to get id of park first.
         assertEquals(0, tipDao.getAllTipsByPark(newPark.getId()).size());//need to get id of park first
+    }
+
+    @Test
+    public void getAllReturnsAllTips() throws Exception {
+        Park parkOne = setupPark();
+        parkDao.add(parkOne);
+        Tip newTip = new Tip("Oprah", "wear good shoes", 5, parkOne.getId());
+        tipDao.add(newTip);
+
+        Tip tip = tipDao.getAll().get(0);
+        assertEquals(1, tipDao.getAll().size());
     }
 
 

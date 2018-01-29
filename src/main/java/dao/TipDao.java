@@ -11,7 +11,7 @@ public interface TipDao {
     void add(Tip tip);
     //read
 
-//    List<Tip> getAll();
+    List<Tip> getAll();
 
     List<Tip> getAllTipsByPark(int parkId);
 

@@ -34,14 +34,14 @@ public class Sql2oTipDao implements TipDao {
 
     }
 
-//    @Override
-//    public List<Tip> getAll() {
-//        String sql = "SELECT * FROM tips";
-//        try (Connection con = sql2o.open()) {
-//            return con.createQuery(sql)
-//                    .executeAndFetch(Tip.class);
-//        }
-//    }
+    @Override
+    public List<Tip> getAll() {
+        String sql = "SELECT * FROM tips";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .executeAndFetch(Tip.class);
+        }
+    }
 
     @Override
     public void deleteById(int id) {
