@@ -111,6 +111,14 @@ public class Sql2oStateDaoTest {
         assertEquals(0,stateDao.getAll().size());
     }
 
+    @Test
+    public void deleteByIdDeletesCorrectState() throws Exception {
+        State stateOne = setupState();
+        stateDao.add(stateOne);
+        stateDao.deleteById(stateOne.getId());
+        assertEquals(0,stateDao.getAll().size());
+    }
+
 //    @Test
 //    public void getAllParksForAState() throws Exception {
 //        Park testPark = setupPark();

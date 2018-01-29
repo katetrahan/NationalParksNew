@@ -68,11 +68,11 @@ public class Sql2oParkDao implements ParkDao{
 //    }
 
 
-//    @Override
-//    public List<State> getAllStatesForAPark(int parkId) {
-//        List<State> states = newArrayList();
-//        return states;
-//    }
+    @Override
+    public List<State> getAllStatesForAPark(int parkId) {
+        List<State> states = new ArrayList();
+        return states;
+    }
 
 
 

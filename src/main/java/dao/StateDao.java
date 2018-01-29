@@ -11,7 +11,7 @@ public interface StateDao {
 
     //read
     List<State> getAll();
-//    List<Park> getAllParksForAState(int stateId);
+    List<Park> getAllParksForAState(int stateId);
 
     State findById(int id);
 

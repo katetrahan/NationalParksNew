@@ -77,11 +77,11 @@ public class Sql2oStateDao implements StateDao {
         }
     }
 
-//    @Override
-//    public List<Park> getAllParksForAState(int stateId) {
-//        List<Park> parks = new ArrayList<>();
-//        return parks;
-//    }
+    @Override
+    public List<Park> getAllParksForAState(int stateId) {
+        List<Park> parks = new ArrayList<>();
+        return parks;
+    }
 
 //    @Override
 //    public List<Park> getAllParksForAState(int stateId) {
