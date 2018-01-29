@@ -76,6 +76,11 @@ public class Sql2oStateDaoTest {
     }
 
     @Test
+    public void zerosStatesReturnsZeroStates() throws Exception {
+        assertEquals(0, stateDao.getAll().size());
+    }
+
+    @Test
     public void findById() throws Exception {
         State state = setupState();
         State secondstate = setupState();
