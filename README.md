@@ -25,17 +25,17 @@ _This is an API that uses Java in order to serve detailed data on National Parks
 
 
 endpoints
-/states/new
-/states
-/states/:id
-/parks/new
-/parks
-/states/:id/park/:parkId
-/parks/:id/states
-/states/:id/parks
-/park/:parkId/tips/new
-/tips
-/parks/delete
+/states/new |
+/states |
+/states/:id |
+/parks/new |
+/parks |
+/states/:id/park/:parkId |
+/parks/:id/states |
+/states/:id/parks |
+/park/:parkId/tips/new |
+/tips |
+/parks/delete |
 
 
 
