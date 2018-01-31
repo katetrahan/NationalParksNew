@@ -25,6 +25,8 @@ _This is an API that uses Java in order to serve detailed data on National Parks
 
 
 ### endpoints:
+| Behavior |
+| :------------- |
 | ** /states/new ** |
 | **/states ** |
 | **/states/:id ** |
