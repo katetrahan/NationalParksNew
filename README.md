@@ -18,7 +18,11 @@ _This is an API that uses Java in order to serve detailed data on National Parks
 | **See list of details about national parks** |"Zion National Park"| "Highest peak, size, how many people visit per year, up for resizing"
 | **See what state a national park is in when searching** |"Crater Lake"|"Oregon"|
 | **Leave a tip/url to donate to National Parks** | "Make sure to hike Angel's Landing"| "Make sure to hike Angel's Landing"|
-| **Add National Parks(for future use) to database**| "Arches(revised)" | "Arches(revised)" |
+| **Add National Parks(for future use) to database** | "Arches(revised)" | "Arches(revised)" |
+| **Edit states**| "Oregn"|"Oregon"|
+| **Edit national parks** | "Zion" | "Zion National Park" |
+| **Delete reviews** | "National parks should be resized" | "" |
+
 
 
 
