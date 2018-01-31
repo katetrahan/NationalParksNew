@@ -24,7 +24,7 @@ _This is an API that uses Java in order to serve detailed data on National Parks
 | **Delete reviews** | "National parks should be resized" | "" |
 
 
-endpoints:
+### endpoints:
 | ** /states/new ** |
 | **/states ** |
 | **/states/:id ** |
